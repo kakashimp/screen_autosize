@@ -3,14 +3,14 @@ import 'package:screen_autosize/screen_autosize.dart';
 import 'dart:ui' as ui show window;
 
 void main() {
-  AutoSizeUtils.instance.initConfig(baseWidth: 375);
+  AutoSizeUtils.instance.initConfig(baseWidth: 1024);
   runAutoSizeApp(MyApp());
 }
 
 class Binding extends AutoSizeWidgetsFlutterBinding{
   static WidgetsBinding ensureInitialized() {
     if (WidgetsBinding.instance == null) Binding();
-    return WidgetsBinding.instance;
+    return WidgetsBinding.instance!;
   }
 }
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       builder: (context, widget) {
         return MediaQueryWrapper(builder: (BuildContext context){
-          return widget;
+          return widget==null?Container(width: 0,height: 0,):widget;
         },);
       },
       theme: ThemeData(
@@ -66,7 +66,7 @@ class ColorsWidget extends StatelessWidget{
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key, this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 

@@ -7,7 +7,7 @@ void main() => runApp(MyApp());
 class Binding extends AutoSizeWidgetsFlutterBinding{
   static WidgetsBinding ensureInitialized() {
     if (WidgetsBinding.instance == null) Binding();
-    return WidgetsBinding.instance;
+    return WidgetsBinding.instance!;
   }
 }
 
@@ -63,7 +63,7 @@ class ColorsWidget extends StatelessWidget{
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key, this.title}) : super(key: key);
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 

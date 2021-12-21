@@ -9,11 +9,11 @@ class AutoSizeUtils {
   factory AutoSizeUtils() => instance;
 
   static AutoSizeUtils get instance => _getInstance();
-  static AutoSizeUtils _instance;
+  static AutoSizeUtils? _instance;
 
   AutoSizeUtils._internal();
 
-  void initConfig({@required double baseWidth}) {
+  void initConfig({required double baseWidth}) {
     baseScreenWidth = baseWidth;
 
     devicePixelRatio = NON_INIT_RATIO;
@@ -36,8 +36,8 @@ class AutoSizeUtils {
     if (_instance == null) {
       _instance = new AutoSizeUtils._internal();
     }
-    _instance._tryInit();
-    return _instance;
+    _instance!._tryInit();
+    return _instance!;
   }
 
   EdgeInsets getPadding() {
@@ -47,15 +47,15 @@ class AutoSizeUtils {
   Size get screenSize => Size(mediaWidth, mediaHeight);
 
   // 屏幕宽
-  double mediaWidth;
+  late double mediaWidth;
 
   // 屏幕高
-  double mediaHeight;
+  late double mediaHeight;
 
   //屏幕像素密度
-  double devicePixelRatio = NON_INIT_RATIO;
+  late double devicePixelRatio = NON_INIT_RATIO;
 
-  double bottomBarHeight;
+  late double bottomBarHeight;
 
-  double statusBarHeight;
+  late double statusBarHeight;
 }

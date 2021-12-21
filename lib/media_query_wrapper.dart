@@ -5,9 +5,9 @@ class MediaQueryWrapper extends StatelessWidget {
   /// Creates a widget that delegates its build to a callback.
   ///
   /// The [builder] argument must not be null.
-  const MediaQueryWrapper({
-    Key key,
-    @required this.builder,
+  MediaQueryWrapper({
+    Key? key,
+    required this.builder,
   }) : assert(builder != null),
         super(key: key);
 

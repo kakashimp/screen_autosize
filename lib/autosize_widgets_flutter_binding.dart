@@ -4,7 +4,7 @@ class AutoSizeWidgetsFlutterBinding extends WidgetsFlutterBinding {
 
   static WidgetsBinding ensureInitialized() {
     if (WidgetsBinding.instance == null) AutoSizeWidgetsFlutterBinding();
-    return WidgetsBinding.instance;
+    return WidgetsBinding.instance!;
   }
 
   @override
@@ -55,7 +55,7 @@ class AutoSizeWidgetsFlutterBinding extends WidgetsFlutterBinding {
 
   void _handlePointerEvent(PointerEvent event) {
     assert(!locked);
-    HitTestResult result;
+    HitTestResult? result;
     if (event is PointerDownEvent) {
       assert(!_hitTests.containsKey(event.pointer));
       result = HitTestResult();
@@ -90,7 +90,7 @@ void runAutoSizeApp(Widget app) {
   };
   // 屏幕尺寸初始化较晚，此操作可限制在尺寸赋值后继续操作
   if (window.physicalSize.isEmpty) {
-    VoidCallback oldMetricsChanged = window.onMetricsChanged;
+    VoidCallback? oldMetricsChanged = window.onMetricsChanged;
     window.onMetricsChanged = () {
       if (!window.physicalSize.isEmpty) {
         if (oldMetricsChanged != null) {
